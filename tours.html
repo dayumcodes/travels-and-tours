@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tours - Wanderlust Travels</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Additional styles specific to the tours page */
+        .tours-hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('images/backgrounds/hero-bg.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 50vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+        }
+
+        .filter-container {
+            background: #f1f5f9;
+            padding: 20px 0;
+        }
+
+        .filters {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .filter-btn {
+            background: white;
+            border: 1px solid #ddd;
+            padding: 10px 20px;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        .tours-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            padding: 60px 0;
+        }
+
+        .tour-card-large {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+        }
+
+        .tour-card-large:hover {
+            transform: translateY(-10px);
+        }
+
+        .tour-image-large {
+            height: 250px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .tour-category {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--primary-color);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+
+        .tour-content-large {
+            padding: 25px;
+        }
+
+        .tour-content-large h3 {
+            margin-bottom: 10px;
+            font-size: 1.4rem;
+        }
+
+        .tour-content-large p {
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .tour-meta {
+            display: flex;
+            justify-content: space-between;
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+
+        .tour-meta span {
+            margin-right: 15px;
+            margin-bottom: 5px;
+        }
+
+        .tour-meta i {
+            color: var(--primary-color);
+            margin-right: 5px;
+        }
+
+        .tour-price {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+
+        .price-value {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .price-value small {
+            font-size: 0.9rem;
+            color: #666;
+            font-weight: normal;
+        }
+
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin: 40px 0;
+        }
+
+        .pagination a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            margin: 0 5px;
+            border-radius: 5px;
+            background: white;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+        }
+
+        .pagination a:hover, .pagination a.active {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .tour-price {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>Wanderlust Travels</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="destinations.html">Destinations</a></li>
+                    <li><a href="tours.html" class="active">Tours</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <section class="tours-hero">
+        <div class="container">
+            <h1>Explore Our Tour Packages</h1>
+            <p>Discover carefully crafted travel experiences for your next adventure</p>
+        </div>
+    </section>
+
+    <section class="filter-container">
+        <div class="container">
+            <div class="filters">
+                <button class="filter-btn active">All Tours</button>
+                <button class="filter-btn">Family</button>
+                <button class="filter-btn">Adventure</button>
+                <button class="filter-btn">Cultural</button>
+                <button class="filter-btn">Luxury</button>
+                <button class="filter-btn">Beach</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="tours-section">
+        <div class="container">
+            <div class="tours-grid">
+                <!-- Dubai Tour -->
+                <div class="tour-card-large">
+                    <div class="tour-image-large" style="background-image: url('images/tours/dubai-tour.jpg');">
+                        <span class="tour-category">Luxury</span>
+                    </div>
+                    <div class="tour-content-large">
+                        <h3>Dubai City Explorer</h3>
+                        <p>Experience the glamour and excitement of Dubai with our comprehensive city tour package.</p>
+                        <div class="tour-meta">
+                            <span><i class="far fa-clock"></i> 5 Days / 4 Nights</span>
+                            <span><i class="fas fa-user-friends"></i> Max People: 12</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Dubai, UAE</span>
+                        </div>
+                        <div class="tour-meta">
+                            <span><i class="fas fa-star"></i> 4.9/5 (28 Reviews)</span>
+                            <span><i class="fas fa-calendar-alt"></i> Available: Jan - Dec</span>
+                        </div>
+                        <div class="tour-price">
+                            <div class="price-value">
+                                $1,299 <small>/ per person</small>
+                            </div>
+                            <a href="#" class="btn">Book Now</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Singapore Tour -->
+                <div class="tour-card-large">
+                    <div class="tour-image-large" style="background-image: url('images/tours/singapore-tour.jpg');">
+                        <span class="tour-category">Family</span>
+                    </div>
+                    <div class="tour-content-large">
+                        <h3>Singapore Highlights</h3>
+                        <p>Discover the perfect blend of culture, cuisine, and modern attractions in the Lion City.</p>
+                        <div class="tour-meta">
+                            <span><i class="far fa-clock"></i> 4 Days / 3 Nights</span>
+                            <span><i class="fas fa-user-friends"></i> Max People: 15</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Singapore</span>
+                        </div>
+                        <div class="tour-meta">
+                            <span><i class="fas fa-star"></i> 4.8/5 (32 Reviews)</span>
+                            <span><i class="fas fa-calendar-alt"></i> Available: Year-round</span>
+                        </div>
+                        <div class="tour-price">
+                            <div class="price-value">
+                                $999 <small>/ per person</small>
+                            </div>
+                            <a href="#" class="btn">Book Now</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Abu Dhabi Tour -->
+                <div class="tour-card-large">
+                    <div class="tour-image-large" style="background-image: url('images/tours/abu-dhabi-tour.jpg');">
+                        <span class="tour-category">Cultural</span>
+                    </div>
+                    <div class="tour-content-large">
+                        <h3>Abu Dhabi Adventure</h3>
+                        <p>Explore the rich heritage and stunning architecture of the UAE's magnificent capital city.</p>
+                        <div class="tour-meta">
+                            <span><i class="far fa-clock"></i> 3 Days / 2 Nights</span>
+                            <span><i class="fas fa-user-friends"></i> Max People: 10</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Abu Dhabi, UAE</span>
+                        </div>
+                        <div class="tour-meta">
+                            <span><i class="fas fa-star"></i> 4.7/5 (19 Reviews)</span>
+                            <span><i class="fas fa-calendar-alt"></i> Available: Oct - Apr</span>
+                        </div>
+                        <div class="tour-price">
+                            <div class="price-value">
+                                $899 <small>/ per person</small>
+                            </div>
+                            <a href="#" class="btn">Book Now</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bali Tour -->
+                <div class="tour-card-large">
+                    <div class="tour-image-large" style="background-image: url('images/cities/bali.jpg');">
+                        <span class="tour-category">Beach</span>
+                    </div>
+                    <div class="tour-content-large">
+                        <h3>Bali Paradise Escape</h3>
+                        <p>Relax on pristine beaches, explore ancient temples, and immerse yourself in Balinese culture.</p>
+                        <div class="tour-meta">
+                            <span><i class="far fa-clock"></i> 7 Days / 6 Nights</span>
+                            <span><i class="fas fa-user-friends"></i> Max People: 8</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Bali, Indonesia</span>
+                        </div>
+                        <div class="tour-meta">
+                            <span><i class="fas fa-star"></i> 4.9/5 (42 Reviews)</span>
+                            <span><i class="fas fa-calendar-alt"></i> Available: Apr - Oct</span>
+                        </div>
+                        <div class="tour-price">
+                            <div class="price-value">
+                                $1,499 <small>/ per person</small>
+                            </div>
+                            <a href="#" class="btn">Book Now</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tokyo Tour -->
+                <div class="tour-card-large">
+                    <div class="tour-image-large" style="background-image: url('images/cities/tokyo.jpg');">
+                        <span class="tour-category">Cultural</span>
+                    </div>
+                    <div class="tour-content-large">
+                        <h3>Tokyo Explorer</h3>
+                        <p>Navigate the vibrant streets of Tokyo and discover the perfect blend of tradition and innovation.</p>
+                        <div class="tour-meta">
+                            <span><i class="far fa-clock"></i> 6 Days / 5 Nights</span>
+                            <span><i class="fas fa-user-friends"></i> Max People: 10</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Tokyo, Japan</span>
+                        </div>
+                        <div class="tour-meta">
+                            <span><i class="fas fa-star"></i> 4.8/5 (36 Reviews)</span>
+                            <span><i class="fas fa-calendar-alt"></i> Available: Mar - Nov</span>
+                        </div>
+                        <div class="tour-price">
+                            <div class="price-value">
+                                $1,799 <small>/ per person</small>
+                            </div>
+                            <a href="#" class="btn">Book Now</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Swiss Alps Tour -->
+                <div class="tour-card-large">
+                    <div class="tour-image-large" style="background-image: url('images/cities/swiss-alps.jpg');">
+                        <span class="tour-category">Adventure</span>
+                    </div>
+                    <div class="tour-content-large">
+                        <h3>Swiss Alps Adventure</h3>
+                        <p>Experience breathtaking mountain landscapes, charming villages, and thrilling outdoor activities.</p>
+                        <div class="tour-meta">
+                            <span><i class="far fa-clock"></i> 8 Days / 7 Nights</span>
+                            <span><i class="fas fa-user-friends"></i> Max People: 8</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Swiss Alps, Switzerland</span>
+                        </div>
+                        <div class="tour-meta">
+                            <span><i class="fas fa-star"></i> 4.9/5 (27 Reviews)</span>
+                            <span><i class="fas fa-calendar-alt"></i> Available: Jun - Sep</span>
+                        </div>
+                        <div class="tour-price">
+                            <div class="price-value">
+                                $2,199 <small>/ per person</small>
+                            </div>
+                            <a href="#" class="btn">Book Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pagination">
+                <a href="#" class="active">1</a>
+                <a href="#">2</a>
+                <a href="#">3</a>
+                <a href="#"><i class="fas fa-chevron-right"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <section class="newsletter">
+        <div class="container">
+            <h2>Get Travel Inspiration and Special Offers</h2>
+            <p>Sign up for our newsletter to receive exclusive deals and travel tips</p>
+            <form>
+                <input type="email" placeholder="Your Email Address">
+                <button type="submit">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section about">
+                    <h3>Wanderlust Travels</h3>
+                    <p>Your trusted partner for unforgettable travel experiences around the world.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="destinations.html">Destinations</a></li>
+                        <li><a href="tours.html">Tours</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section contact">
+                    <h3>Contact Us</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> 123 Travel Street, City, Country</p>
+                    <p><i class="fas fa-phone"></i> +1 234 567 8900</p>
+                    <p><i class="fas fa-envelope"></i> info@wanderlust.com</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Wanderlust Travels. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script>
+        // Filter functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    // Get filter value
+                    const filter = this.textContent;
+                    
+                    // Get all tour cards
+                    const cards = document.querySelectorAll('.tour-card-large');
+                    
+                    // Filter cards based on category
+                    cards.forEach(card => {
+                        const category = card.querySelector('.tour-category').textContent;
+                        
+                        if (filter === 'All Tours' || filter === category) {
+                            card.style.display = 'block';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html> 

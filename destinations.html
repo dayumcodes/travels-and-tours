@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Destinations - Wanderlust Travels</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Additional styles specific to the destinations page */
+        .destinations-hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('images/backgrounds/destinations-hero.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 50vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+        }
+
+        .filter-container {
+            background: #f1f5f9;
+            padding: 20px 0;
+        }
+
+        .filters {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .filter-btn {
+            background: white;
+            border: 1px solid #ddd;
+            padding: 10px 20px;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        .destinations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            padding: 60px 0;
+        }
+
+        .destination-card {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+            background: white;
+        }
+
+        .destination-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .destination-img {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .destination-category {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--primary-color);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+
+        .destination-content {
+            padding: 20px;
+        }
+
+        .destination-content h3 {
+            margin-bottom: 10px;
+        }
+
+        .destination-content p {
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .destination-meta {
+            display: flex;
+            justify-content: space-between;
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin: 40px 0;
+        }
+
+        .pagination a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            margin: 0 5px;
+            border-radius: 5px;
+            background: white;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+        }
+
+        .pagination a:hover, .pagination a.active {
+            background: var(--primary-color);
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>Wanderlust Travels</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="destinations.html" class="active">Destinations</a></li>
+                    <li><a href="tours.html">Tours</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <section class="destinations-hero">
+        <div class="container">
+            <h1>Explore Our Destinations</h1>
+            <p>Discover the perfect destination for your next adventure</p>
+        </div>
+    </section>
+
+    <section class="filter-container">
+        <div class="container">
+            <div class="filters">
+                <button class="filter-btn active">All</button>
+                <button class="filter-btn">Beach</button>
+                <button class="filter-btn">Mountain</button>
+                <button class="filter-btn">City</button>
+                <button class="filter-btn">Cultural</button>
+                <button class="filter-btn">Adventure</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="destinations-section">
+        <div class="container">
+            <div class="destinations-grid">
+                <!-- Abu Dhabi -->
+                <div class="destination-card">
+                    <div class="destination-img" style="background-image: url('images/cities/abu-dhabi.jpg');">
+                        <span class="destination-category">City</span>
+                    </div>
+                    <div class="destination-content">
+                        <h3>Abu Dhabi, UAE</h3>
+                        <p>Experience the perfect blend of tradition and modernity in the UAE's capital city.</p>
+                        <div class="destination-meta">
+                            <span><i class="far fa-clock"></i> Best time: Oct-Apr</span>
+                            <span><i class="fas fa-star"></i> 4.8/5</span>
+                        </div>
+                        <a href="#" class="btn">Explore More</a>
+                    </div>
+                </div>
+
+                <!-- Dubai -->
+                <div class="destination-card">
+                    <div class="destination-img" style="background-image: url('images/cities/dubai.jpg');">
+                        <span class="destination-category">City</span>
+                    </div>
+                    <div class="destination-content">
+                        <h3>Dubai, UAE</h3>
+                        <p>Discover the city of superlatives with its iconic skyscrapers and luxury experiences.</p>
+                        <div class="destination-meta">
+                            <span><i class="far fa-clock"></i> Best time: Nov-Mar</span>
+                            <span><i class="fas fa-star"></i> 4.9/5</span>
+                        </div>
+                        <a href="#" class="btn">Explore More</a>
+                    </div>
+                </div>
+
+                <!-- Jeddah -->
+                <div class="destination-card">
+                    <div class="destination-img" style="background-image: url('images/cities/jeddah.jpg');">
+                        <span class="destination-category">Cultural</span>
+                    </div>
+                    <div class="destination-content">
+                        <h3>Jeddah, Saudi Arabia</h3>
+                        <p>Explore the gateway to Mecca and enjoy the beautiful coastal city of Saudi Arabia.</p>
+                        <div class="destination-meta">
+                            <span><i class="far fa-clock"></i> Best time: Nov-Mar</span>
+                            <span><i class="fas fa-star"></i> 4.6/5</span>
+                        </div>
+                        <a href="#" class="btn">Explore More</a>
+                    </div>
+                </div>
+
+                <!-- Singapore -->
+                <div class="destination-card">
+                    <div class="destination-img" style="background-image: url('images/cities/singapore.jpg');">
+                        <span class="destination-category">City</span>
+                    </div>
+                    <div class="destination-content">
+                        <h3>Singapore</h3>
+                        <p>Visit the Lion City with its stunning architecture, diverse culture, and amazing food.</p>
+                        <div class="destination-meta">
+                            <span><i class="far fa-clock"></i> Best time: Year-round</span>
+                            <span><i class="fas fa-star"></i> 4.8/5</span>
+                        </div>
+                        <a href="#" class="btn">Explore More</a>
+                    </div>
+                </div>
+
+                <!-- Bali -->
+                <div class="destination-card">
+                    <div class="destination-img" style="background-image: url('images/cities/bali.jpg');">
+                        <span class="destination-category">Beach</span>
+                    </div>
+                    <div class="destination-content">
+                        <h3>Bali, Indonesia</h3>
+                        <p>Experience the Island of Gods with its beautiful beaches, rice terraces, and temples.</p>
+                        <div class="destination-meta">
+                            <span><i class="far fa-clock"></i> Best time: Apr-Oct</span>
+                            <span><i class="fas fa-star"></i> 4.7/5</span>
+                        </div>
+                        <a href="#" class="btn">Explore More</a>
+                    </div>
+                </div>
+
+                <!-- Swiss Alps -->
+                <div class="destination-card">
+                    <div class="destination-img" style="background-image: url('images/cities/swiss-alps.jpg');">
+                        <span class="destination-category">Mountain</span>
+                    </div>
+                    <div class="destination-content">
+                        <h3>Swiss Alps, Switzerland</h3>
+                        <p>Discover the breathtaking mountain landscapes and charming villages of Switzerland.</p>
+                        <div class="destination-meta">
+                            <span><i class="far fa-clock"></i> Best time: Jun-Sep</span>
+                            <span><i class="fas fa-star"></i> 4.9/5</span>
+                        </div>
+                        <a href="#" class="btn">Explore More</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pagination">
+                <a href="#" class="active">1</a>
+                <a href="#">2</a>
+                <a href="#">3</a>
+                <a href="#"><i class="fas fa-chevron-right"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <section class="newsletter">
+        <div class="container">
+            <h2>Get Travel Inspiration and Special Offers</h2>
+            <p>Sign up for our newsletter to receive exclusive deals and travel tips</p>
+            <form>
+                <input type="email" placeholder="Your Email Address">
+                <button type="submit">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section about">
+                    <h3>Wanderlust Travels</h3>
+                    <p>Your trusted partner for unforgettable travel experiences around the world.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="destinations.html">Destinations</a></li>
+                        <li><a href="tours.html">Tours</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section contact">
+                    <h3>Contact Us</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> 123 Travel Street, City, Country</p>
+                    <p><i class="fas fa-phone"></i> +1 234 567 8900</p>
+                    <p><i class="fas fa-envelope"></i> info@wanderlust.com</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Wanderlust Travels. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script>
+        // Filter functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    // Get filter value
+                    const filter = this.textContent;
+                    
+                    // Get all destination cards
+                    const cards = document.querySelectorAll('.destination-card');
+                    
+                    // Filter cards based on category
+                    cards.forEach(card => {
+                        const category = card.querySelector('.destination-category').textContent;
+                        
+                        if (filter === 'All' || filter === category) {
+                            card.style.display = 'block';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html> 
