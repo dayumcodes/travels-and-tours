@@ -17,13 +17,38 @@ document.addEventListener('DOMContentLoaded', function() {
     if (prevBtn && nextBtn && citySlider) {
         // Calculate the width of a single card plus its margin
         const cardWidth = 320; // 300px width + 20px margin
+        
+        // Get total number of cards and calculate total width
+        const cards = citySlider.querySelectorAll('.city-card');
+        const totalCards = cards.length;
+        const totalWidth = totalCards * cardWidth;
 
         nextBtn.addEventListener('click', function() {
-            citySlider.scrollLeft += cardWidth;
+            // Check if we're at or near the end
+            if (citySlider.scrollLeft + citySlider.clientWidth >= citySlider.scrollWidth - cardWidth) {
+                // Loop back to the beginning with smooth animation
+                citySlider.scrollTo({
+                    left: 0,
+                    behavior: 'smooth'
+                });
+            } else {
+                // Normal scroll to next card
+                citySlider.scrollLeft += cardWidth;
+            }
         });
 
         prevBtn.addEventListener('click', function() {
-            citySlider.scrollLeft -= cardWidth;
+            // Check if we're at or near the beginning
+            if (citySlider.scrollLeft <= cardWidth) {
+                // Loop to the end with smooth animation
+                citySlider.scrollTo({
+                    left: totalWidth,
+                    behavior: 'smooth'
+                });
+            } else {
+                // Normal scroll to previous card
+                citySlider.scrollLeft -= cardWidth;
+            }
         });
     }
 
