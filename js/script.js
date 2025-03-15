@@ -9,6 +9,32 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    // Booking Tabs Functionality
+    const bookingTabs = document.querySelectorAll('.booking-tab');
+    const bookingForms = document.querySelectorAll('.booking-form');
+
+    if (bookingTabs.length > 0 && bookingForms.length > 0) {
+        bookingTabs.forEach(tab => {
+            tab.addEventListener('click', function() {
+                // Remove active class from all tabs and forms
+                bookingTabs.forEach(t => t.classList.remove('active'));
+                bookingForms.forEach(f => f.classList.remove('active'));
+                
+                // Add active class to clicked tab
+                this.classList.add('active');
+                
+                // Get the tab data attribute
+                const tabId = this.getAttribute('data-tab');
+                
+                // Show the corresponding form
+                const activeForm = document.getElementById(`${tabId}-form`);
+                if (activeForm) {
+                    activeForm.classList.add('active');
+                }
+            });
+        });
+    }
+
     // City Slider Functionality
     const prevBtn = document.querySelector('.prev-btn');
     const nextBtn = document.querySelector('.next-btn');
@@ -73,50 +99,105 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 5000);
     }
 
-    // Smooth Scroll for Navigation Links
-    const navLinks = document.querySelectorAll('nav a');
+    // Partners Logo Slider
+    const partnersSlider = document.querySelector('.partners-slider');
     
-    navLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
-            // Only apply to links that point to an ID on the page
-            const targetId = this.getAttribute('href');
-            if (targetId.startsWith('#') && targetId.length > 1) {
-                e.preventDefault();
+    if (partnersSlider) {
+        // Auto scroll partners logos
+        let partnersScrollAmount = 0;
+        const partnerLogoWidth = 200; // Approximate width of each partner logo
+        const partnersMaxScroll = partnersSlider.scrollWidth - partnersSlider.clientWidth;
+        
+        // Only auto-scroll if there are enough logos to scroll
+        if (partnersMaxScroll > 0) {
+            setInterval(() => {
+                partnersScrollAmount += partnerLogoWidth;
                 
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80, // Adjust for header height
-                        behavior: 'smooth'
-                    });
-                    
-                    // Close mobile menu if open
-                    if (window.innerWidth <= 768) {
-                        nav.style.display = 'none';
-                    }
+                // Reset scroll position when reaching the end
+                if (partnersScrollAmount > partnersMaxScroll) {
+                    partnersScrollAmount = 0;
                 }
-            }
-        });
-    });
+                
+                partnersSlider.scrollLeft = partnersScrollAmount;
+            }, 3000);
+        }
+    }
 
-    // Search Box Functionality (Placeholder for now)
-    const searchBox = document.querySelector('.search-box button');
+    // Date Picker Initialization
+    const datePickers = document.querySelectorAll('input[type="date"]');
     
-    if (searchBox) {
-        searchBox.addEventListener('click', function() {
-            const searchInput = document.querySelector('.search-box input');
-            const searchTerm = searchInput.value.trim();
+    if (datePickers.length > 0) {
+        // Set minimum date to today
+        const today = new Date().toISOString().split('T')[0];
+        
+        datePickers.forEach(picker => {
+            picker.setAttribute('min', today);
             
-            if (searchTerm) {
-                alert(`You searched for: ${searchTerm}\nThis would redirect to search results in a real application.`);
-            } else {
-                alert('Please enter a destination to search.');
+            // If it's a check-out date, set min date to check-in date when check-in changes
+            if (picker.id === 'check-out') {
+                const checkInPicker = document.getElementById('check-in');
+                
+                if (checkInPicker) {
+                    checkInPicker.addEventListener('change', function() {
+                        picker.setAttribute('min', this.value);
+                        
+                        // If current check-out date is before new check-in date, update it
+                        if (picker.value && picker.value < this.value) {
+                            picker.value = this.value;
+                        }
+                    });
+                }
             }
         });
     }
 
-    // Newsletter Form Submission (Placeholder)
-    const newsletterForm = document.querySelector('.newsletter form');
+    // Form Validation
+    const bookingFormElements = document.querySelectorAll('.booking-form');
+    
+    if (bookingFormElements.length > 0) {
+        bookingFormElements.forEach(form => {
+            const submitBtn = form.querySelector('.btn-search');
+            
+            if (submitBtn) {
+                submitBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // Get all required fields
+                    const requiredFields = form.querySelectorAll('select, input');
+                    let isValid = true;
+                    let firstInvalidField = null;
+                    
+                    requiredFields.forEach(field => {
+                        if (!field.value) {
+                            isValid = false;
+                            field.style.borderColor = 'var(--danger-color)';
+                            
+                            if (!firstInvalidField) {
+                                firstInvalidField = field;
+                            }
+                        } else {
+                            field.style.borderColor = '#ddd';
+                        }
+                    });
+                    
+                    if (isValid) {
+                        // In a real application, this would submit the form or make an API call
+                        alert('Your search has been submitted! In a real application, this would show search results.');
+                    } else {
+                        // Focus on the first invalid field
+                        if (firstInvalidField) {
+                            firstInvalidField.focus();
+                        }
+                        
+                        alert('Please fill in all fields to search.');
+                    }
+                });
+            }
+        });
+    }
+
+    // Newsletter Form Submission
+    const newsletterForm = document.querySelector('.newsletter-form');
     
     if (newsletterForm) {
         newsletterForm.addEventListener('submit', function(e) {
@@ -142,7 +223,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Add animation to cards on scroll
     const animateOnScroll = () => {
-        const cards = document.querySelectorAll('.city-card, .tour-card');
+        const cards = document.querySelectorAll('.city-card, .deal-card, .category-card, .feature-card');
         
         cards.forEach(card => {
             const cardTop = card.getBoundingClientRect().top;
@@ -157,7 +238,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Initialize card animations
     const initCardAnimations = () => {
-        const cards = document.querySelectorAll('.city-card, .tour-card');
+        const cards = document.querySelectorAll('.city-card, .deal-card, .category-card, .feature-card');
         
         cards.forEach(card => {
             card.style.opacity = '0';
@@ -171,6 +252,16 @@ document.addEventListener('DOMContentLoaded', function() {
         // Add scroll event listener
         window.addEventListener('scroll', animateOnScroll);
     };
+
+    // Currency Selector Functionality
+    const currencySelect = document.querySelector('.currency-select');
+    
+    if (currencySelect) {
+        currencySelect.addEventListener('change', function() {
+            const selectedCurrency = this.value;
+            alert(`Currency changed to ${selectedCurrency}. In a real application, this would update all prices.`);
+        });
+    }
 
     // Initialize animations after a short delay to ensure DOM is fully loaded
     setTimeout(initCardAnimations, 100);

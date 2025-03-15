@@ -9,21 +9,53 @@
 </head>
 <body>
     <header>
-        <div class="container">
-            <div class="logo">
-                <h1>Wanderlust Travels</h1>
+        <div class="top-header">
+            <div class="container">
+                <div class="contact-info">
+                    <span><i class="fas fa-phone"></i> +1 234 567 8900</span>
+                    <span><i class="fas fa-envelope"></i> info@wanderlust.com</span>
+                </div>
+                <div class="top-links">
+                    <a href="#"><i class="fas fa-user"></i> My Account</a>
+                    <a href="#"><i class="fas fa-heart"></i> Wishlist</a>
+                    <select class="currency-select">
+                        <option value="USD">USD</option>
+                        <option value="EUR">EUR</option>
+                        <option value="GBP">GBP</option>
+                    </select>
+                </div>
             </div>
-            <nav>
-                <ul>
-                    <li><a href="index.html" class="active">Home</a></li>
-                    <li><a href="destinations.html">Destinations</a></li>
-                    <li><a href="tours.html">Tours</a></li>
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-            </nav>
-            <div class="mobile-menu">
-                <i class="fas fa-bars"></i>
+        </div>
+        <div class="main-header">
+            <div class="container">
+                <div class="logo">
+                    <h1>Wanderlust Travels</h1>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="index.html" class="active">Home</a></li>
+                        <li><a href="destinations.html">Destinations</a></li>
+                        <li><a href="tours.html">Tours</a></li>
+                        <li class="dropdown">
+                            <a href="#">Experiences <i class="fas fa-chevron-down"></i></a>
+                            <div class="dropdown-content">
+                                <a href="#">Adventure Tours</a>
+                                <a href="#">Cultural Tours</a>
+                                <a href="#">Beach Holidays</a>
+                                <a href="#">City Breaks</a>
+                            </div>
+                        </li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </nav>
+                <div class="header-buttons">
+                    <a href="#" class="btn btn-small"><i class="fas fa-search"></i></a>
+                    <a href="#" class="btn btn-small"><i class="fas fa-shopping-cart"></i></a>
+                </div>
+                <div class="mobile-menu">
+                    <i class="fas fa-bars"></i>
+                </div>
             </div>
         </div>
     </header>
@@ -32,9 +64,234 @@
         <div class="container">
             <h1>Explore the World's Most Beautiful Destinations</h1>
             <p>Your journey to unforgettable experiences begins here</p>
-            <div class="search-box">
-                <input type="text" placeholder="Where do you want to go?">
-                <button>Search</button>
+            
+            <div class="booking-container">
+                <div class="booking-tabs">
+                    <button class="booking-tab active" data-tab="tours"><i class="fas fa-globe"></i> Tours</button>
+                    <button class="booking-tab" data-tab="hotels"><i class="fas fa-hotel"></i> Hotels</button>
+                    <button class="booking-tab" data-tab="transfers"><i class="fas fa-shuttle-van"></i> Transfers</button>
+                    <button class="booking-tab" data-tab="activities"><i class="fas fa-hiking"></i> Activities</button>
+                </div>
+                
+                <div class="booking-content">
+                    <!-- Tours Booking Form -->
+                    <div class="booking-form active" id="tours-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="tour-destination">Destination</label>
+                                <select id="tour-destination">
+                                    <option value="">Select Destination</option>
+                                    <option value="dubai">Dubai</option>
+                                    <option value="abu-dhabi">Abu Dhabi</option>
+                                    <option value="singapore">Singapore</option>
+                                    <option value="tokyo">Tokyo</option>
+                                    <option value="paris">Paris</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="tour-type">Tour Type</label>
+                                <select id="tour-type">
+                                    <option value="">All Tour Types</option>
+                                    <option value="city-tour">City Tour</option>
+                                    <option value="adventure">Adventure</option>
+                                    <option value="cultural">Cultural</option>
+                                    <option value="luxury">Luxury</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="tour-date">Date</label>
+                                <input type="date" id="tour-date">
+                            </div>
+                            <div class="form-group">
+                                <label for="tour-guests">Guests</label>
+                                <select id="tour-guests">
+                                    <option value="1">1 Guest</option>
+                                    <option value="2">2 Guests</option>
+                                    <option value="3">3 Guests</option>
+                                    <option value="4">4 Guests</option>
+                                    <option value="5">5+ Guests</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-search">Search Tours</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Hotels Booking Form -->
+                    <div class="booking-form" id="hotels-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="hotel-destination">Destination</label>
+                                <select id="hotel-destination">
+                                    <option value="">Select Destination</option>
+                                    <option value="dubai">Dubai</option>
+                                    <option value="abu-dhabi">Abu Dhabi</option>
+                                    <option value="singapore">Singapore</option>
+                                    <option value="tokyo">Tokyo</option>
+                                    <option value="paris">Paris</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="check-in">Check In</label>
+                                <input type="date" id="check-in">
+                            </div>
+                            <div class="form-group">
+                                <label for="check-out">Check Out</label>
+                                <input type="date" id="check-out">
+                            </div>
+                            <div class="form-group">
+                                <label for="hotel-guests">Guests</label>
+                                <select id="hotel-guests">
+                                    <option value="1">1 Guest</option>
+                                    <option value="2">2 Guests</option>
+                                    <option value="3">3 Guests</option>
+                                    <option value="4">4 Guests</option>
+                                    <option value="5">5+ Guests</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-search">Search Hotels</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Transfers Booking Form -->
+                    <div class="booking-form" id="transfers-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="transfer-type">Transfer Type</label>
+                                <select id="transfer-type">
+                                    <option value="airport">Airport Transfer</option>
+                                    <option value="intercity">Intercity Transfer</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="pickup-location">Pickup Location</label>
+                                <input type="text" id="pickup-location" placeholder="Airport or City">
+                            </div>
+                            <div class="form-group">
+                                <label for="dropoff-location">Dropoff Location</label>
+                                <input type="text" id="dropoff-location" placeholder="Hotel or City">
+                            </div>
+                            <div class="form-group">
+                                <label for="transfer-date">Date</label>
+                                <input type="date" id="transfer-date">
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-search">Search Transfers</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Activities Booking Form -->
+                    <div class="booking-form" id="activities-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="activity-destination">Destination</label>
+                                <select id="activity-destination">
+                                    <option value="">Select Destination</option>
+                                    <option value="dubai">Dubai</option>
+                                    <option value="abu-dhabi">Abu Dhabi</option>
+                                    <option value="singapore">Singapore</option>
+                                    <option value="tokyo">Tokyo</option>
+                                    <option value="paris">Paris</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="activity-type">Activity Type</label>
+                                <select id="activity-type">
+                                    <option value="">All Activities</option>
+                                    <option value="water-sports">Water Sports</option>
+                                    <option value="theme-parks">Theme Parks</option>
+                                    <option value="desert-safari">Desert Safari</option>
+                                    <option value="city-tours">City Tours</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="activity-date">Date</label>
+                                <input type="date" id="activity-date">
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-search">Search Activities</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="featured-deals">
+        <div class="container">
+            <div class="section-header">
+                <h2>Featured Deals</h2>
+                <p>Limited time offers on our most popular experiences</p>
+            </div>
+            <div class="deals-grid">
+                <div class="deal-card">
+                    <div class="deal-badge">20% OFF</div>
+                    <div class="deal-image" style="background-image: url('images/tours/dubai-tour.jpg');"></div>
+                    <div class="deal-content">
+                        <div class="deal-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <span>(42 reviews)</span>
+                        </div>
+                        <h3>Dubai City Explorer</h3>
+                        <p class="deal-duration"><i class="far fa-clock"></i> 5 Days / 4 Nights</p>
+                        <div class="deal-price">
+                            <span class="old-price">$1,599</span>
+                            <span class="current-price">$1,299</span>
+                        </div>
+                        <a href="#" class="btn">View Deal</a>
+                    </div>
+                </div>
+                <div class="deal-card">
+                    <div class="deal-badge">15% OFF</div>
+                    <div class="deal-image" style="background-image: url('images/tours/singapore-tour.jpg');"></div>
+                    <div class="deal-content">
+                        <div class="deal-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <span>(36 reviews)</span>
+                        </div>
+                        <h3>Singapore Highlights</h3>
+                        <p class="deal-duration"><i class="far fa-clock"></i> 4 Days / 3 Nights</p>
+                        <div class="deal-price">
+                            <span class="old-price">$1,199</span>
+                            <span class="current-price">$999</span>
+                        </div>
+                        <a href="#" class="btn">View Deal</a>
+                    </div>
+                </div>
+                <div class="deal-card">
+                    <div class="deal-badge">25% OFF</div>
+                    <div class="deal-image" style="background-image: url('images/tours/abu-dhabi-tour.jpg');"></div>
+                    <div class="deal-content">
+                        <div class="deal-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <span>(28 reviews)</span>
+                        </div>
+                        <h3>Abu Dhabi Adventure</h3>
+                        <p class="deal-duration"><i class="far fa-clock"></i> 3 Days / 2 Nights</p>
+                        <div class="deal-price">
+                            <span class="old-price">$1,199</span>
+                            <span class="current-price">$899</span>
+                        </div>
+                        <a href="#" class="btn">View Deal</a>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -79,39 +336,93 @@
         </div>
     </section>
 
-    <section class="popular-tours">
+    <section class="popular-experiences">
         <div class="container">
             <div class="section-header">
-                <h2>Popular Tour Packages</h2>
+                <h2>Popular Experiences</h2>
                 <p>Discover our most sought-after travel experiences</p>
             </div>
-            <div class="tours-grid">
-                <div class="tour-card">
-                    <div class="tour-image tour1"></div>
-                    <div class="tour-content">
-                        <h3>Dubai City Explorer</h3>
-                        <p class="duration"><i class="far fa-clock"></i> 5 Days / 4 Nights</p>
-                        <p class="price">From $1,299</p>
-                        <a href="#" class="btn">View Details</a>
+            <div class="experience-categories">
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-umbrella-beach"></i>
                     </div>
+                    <h3>Beach Holidays</h3>
+                    <p>Relax on pristine beaches</p>
                 </div>
-                <div class="tour-card">
-                    <div class="tour-image tour2"></div>
-                    <div class="tour-content">
-                        <h3>Singapore Highlights</h3>
-                        <p class="duration"><i class="far fa-clock"></i> 4 Days / 3 Nights</p>
-                        <p class="price">From $999</p>
-                        <a href="#" class="btn">View Details</a>
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-mountain"></i>
                     </div>
+                    <h3>Adventure Tours</h3>
+                    <p>Thrilling outdoor activities</p>
                 </div>
-                <div class="tour-card">
-                    <div class="tour-image tour3"></div>
-                    <div class="tour-content">
-                        <h3>Abu Dhabi Adventure</h3>
-                        <p class="duration"><i class="far fa-clock"></i> 3 Days / 2 Nights</p>
-                        <p class="price">From $899</p>
-                        <a href="#" class="btn">View Details</a>
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-landmark"></i>
                     </div>
+                    <h3>Cultural Tours</h3>
+                    <p>Explore local heritage</p>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <h3>Food & Culinary</h3>
+                    <p>Taste authentic cuisine</p>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-city"></i>
+                    </div>
+                    <h3>City Breaks</h3>
+                    <p>Explore urban destinations</p>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-spa"></i>
+                    </div>
+                    <h3>Wellness Retreats</h3>
+                    <p>Rejuvenate mind and body</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="why-choose-us">
+        <div class="container">
+            <div class="section-header">
+                <h2>Why Choose Wanderlust Travels</h2>
+                <p>We're committed to making your travel experience exceptional</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-tag"></i>
+                    </div>
+                    <h3>Best Price Guarantee</h3>
+                    <p>We offer the best prices for tours and activities around the world.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3>24/7 Customer Support</h3>
+                    <p>Our support team is available round the clock to assist you.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-calendar-check"></i>
+                    </div>
+                    <h3>Flexible Booking</h3>
+                    <p>Change your plans with free cancellation up to 24 hours before your activity.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-user-shield"></i>
+                    </div>
+                    <h3>Secure Payments</h3>
+                    <p>We use secure payment methods to ensure your information is protected.</p>
                 </div>
             </div>
         </div>
@@ -124,22 +435,86 @@
             </div>
             <div class="testimonial-slider">
                 <div class="testimonial">
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
                     <div class="quote">
                         <p>"The Dubai tour was absolutely amazing! The itinerary was perfect and our guide was knowledgeable and friendly. Will definitely book with Wanderlust again!"</p>
                     </div>
                     <div class="author">
-                        <h4>Sarah Johnson</h4>
-                        <p>Dubai City Explorer</p>
+                        <div class="author-image" style="background-image: url('images/testimonials/user1.jpg');"></div>
+                        <div class="author-info">
+                            <h4>Sarah Johnson</h4>
+                            <p>Dubai City Explorer</p>
+                        </div>
                     </div>
                 </div>
                 <div class="testimonial">
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
                     <div class="quote">
                         <p>"Singapore was a dream come true. Everything was well organized and the accommodations were top-notch. Highly recommend!"</p>
                     </div>
                     <div class="author">
-                        <h4>Michael Chen</h4>
-                        <p>Singapore Highlights</p>
+                        <div class="author-image" style="background-image: url('images/testimonials/user2.jpg');"></div>
+                        <div class="author-info">
+                            <h4>Michael Chen</h4>
+                            <p>Singapore Highlights</p>
+                        </div>
                     </div>
+                </div>
+                <div class="testimonial">
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="quote">
+                        <p>"The Abu Dhabi tour exceeded all our expectations. The desert safari was the highlight of our trip. Thank you Wanderlust for an unforgettable experience!"</p>
+                    </div>
+                    <div class="author">
+                        <div class="author-image" style="background-image: url('images/testimonials/user3.jpg');"></div>
+                        <div class="author-info">
+                            <h4>Emma Rodriguez</h4>
+                            <p>Abu Dhabi Adventure</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="partners">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Trusted Partners</h2>
+            </div>
+            <div class="partners-slider">
+                <div class="partner-logo">
+                    <img src="images/partners/partner1.png" alt="Partner 1">
+                </div>
+                <div class="partner-logo">
+                    <img src="images/partners/partner2.png" alt="Partner 2">
+                </div>
+                <div class="partner-logo">
+                    <img src="images/partners/partner3.png" alt="Partner 3">
+                </div>
+                <div class="partner-logo">
+                    <img src="images/partners/partner4.png" alt="Partner 4">
+                </div>
+                <div class="partner-logo">
+                    <img src="images/partners/partner5.png" alt="Partner 5">
                 </div>
             </div>
         </div>
@@ -147,12 +522,16 @@
 
     <section class="newsletter">
         <div class="container">
-            <h2>Get Travel Inspiration and Special Offers</h2>
-            <p>Sign up for our newsletter to receive exclusive deals and travel tips</p>
-            <form>
-                <input type="email" placeholder="Your Email Address">
-                <button type="submit">Subscribe</button>
-            </form>
+            <div class="newsletter-content">
+                <div class="newsletter-text">
+                    <h2>Get Travel Inspiration and Special Offers</h2>
+                    <p>Sign up for our newsletter to receive exclusive deals and travel tips</p>
+                </div>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Your Email Address">
+                    <button type="submit" class="btn">Subscribe</button>
+                </form>
+            </div>
         </div>
     </section>
 
@@ -167,16 +546,27 @@
                         <a href="#"><i class="fab fa-twitter"></i></a>
                         <a href="#"><i class="fab fa-instagram"></i></a>
                         <a href="#"><i class="fab fa-pinterest"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
                 <div class="footer-section links">
                     <h3>Quick Links</h3>
                     <ul>
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">Destinations</a></li>
-                        <li><a href="#">Tours</a></li>
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Contact</a></li>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="destinations.html">Destinations</a></li>
+                        <li><a href="tours.html">Tours</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section links">
+                    <h3>Popular Destinations</h3>
+                    <ul>
+                        <li><a href="#">Dubai</a></li>
+                        <li><a href="#">Abu Dhabi</a></li>
+                        <li><a href="#">Singapore</a></li>
+                        <li><a href="#">Tokyo</a></li>
+                        <li><a href="#">Paris</a></li>
                     </ul>
                 </div>
                 <div class="footer-section contact">
@@ -184,6 +574,12 @@
                     <p><i class="fas fa-map-marker-alt"></i> 123 Travel Street, City, Country</p>
                     <p><i class="fas fa-phone"></i> +1 234 567 8900</p>
                     <p><i class="fas fa-envelope"></i> info@wanderlust.com</p>
+                    <div class="payment-methods">
+                        <img src="images/payment/visa.png" alt="Visa">
+                        <img src="images/payment/mastercard.png" alt="Mastercard">
+                        <img src="images/payment/amex.png" alt="American Express">
+                        <img src="images/payment/paypal.png" alt="PayPal">
+                    </div>
                 </div>
             </div>
             <div class="footer-bottom">
