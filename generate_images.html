@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generate Placeholder Images</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .image-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        .image-item {
+            text-align: center;
+        }
+        canvas {
+            border: 1px solid #ddd;
+            margin-bottom: 10px;
+        }
+        button {
+            padding: 10px 15px;
+            background: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-bottom: 30px;
+        }
+        h2 {
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Placeholder Image Generator</h1>
+    <p>Click the buttons below to generate and download placeholder images for the website.</p>
+    
+    <h2>User Testimonial Images</h2>
+    <button id="generate-testimonials">Generate Testimonial Images</button>
+    <div class="image-container" id="testimonial-images"></div>
+    
+    <h2>Partner Logo Images</h2>
+    <button id="generate-partners">Generate Partner Logos</button>
+    <div class="image-container" id="partner-images"></div>
+    
+    <h2>Payment Method Images</h2>
+    <button id="generate-payments">Generate Payment Method Images</button>
+    <div class="image-container" id="payment-images"></div>
+    
+    <script>
+        // Function to create and download a canvas as an image
+        function downloadCanvas(canvas, filename) {
+            const link = document.createElement('a');
+            link.download = filename;
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+        }
+        
+        // Generate testimonial user images
+        document.getElementById('generate-testimonials').addEventListener('click', function() {
+            const container = document.getElementById('testimonial-images');
+            container.innerHTML = '';
+            
+            const users = [
+                { name: 'User 1', color: '#ff6b6b' },
+                { name: 'User 2', color: '#2ecc71' },
+                { name: 'User 3', color: '#3498db' }
+            ];
+            
+            users.forEach((user, index) => {
+                const canvas = document.createElement('canvas');
+                canvas.width = 200;
+                canvas.height = 200;
+                const ctx = canvas.getContext('2d');
+                
+                // Background
+                ctx.fillStyle = user.color;
+                ctx.fillRect(0, 0, 200, 200);
+                
+                // Head
+                ctx.fillStyle = '#ecf0f1';
+                ctx.beginPath();
+                ctx.arc(100, 80, 50, 0, Math.PI * 2);
+                ctx.fill();
+                
+                // Body
+                ctx.beginPath();
+                ctx.arc(100, 220, 90, 0, Math.PI * 2);
+                ctx.fill();
+                
+                // Text
+                ctx.fillStyle = '#2c3e50';
+                ctx.font = '24px Arial';
+                ctx.textAlign = 'center';
+                ctx.fillText(user.name, 100, 180);
+                
+                const div = document.createElement('div');
+                div.className = 'image-item';
+                div.appendChild(canvas);
+                
+                const button = document.createElement('button');
+                button.textContent = `Download ${user.name}`;
+                button.addEventListener('click', () => downloadCanvas(canvas, `user${index + 1}.jpg`));
+                div.appendChild(button);
+                
+                container.appendChild(div);
+            });
+        });
+        
+        // Generate partner logo images
+        document.getElementById('generate-partners').addEventListener('click', function() {
+            const container = document.getElementById('partner-images');
+            container.innerHTML = '';
+            
+            const colors = ['#3498db', '#e74c3c', '#2ecc71', '#f39c12', '#9b59b6'];
+            
+            for (let i = 0; i < 5; i++) {
+                const canvas = document.createElement('canvas');
+                canvas.width = 200;
+                canvas.height = 100;
+                const ctx = canvas.getContext('2d');
+                
+                // Background
+                ctx.fillStyle = colors[i];
+                ctx.fillRect(0, 0, 200, 100);
+                
+                // Text
+                ctx.fillStyle = 'white';
+                ctx.font = 'bold 20px Arial';
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                ctx.fillText(`PARTNER ${i + 1}`, 100, 50);
+                
+                const div = document.createElement('div');
+                div.className = 'image-item';
+                div.appendChild(canvas);
+                
+                const button = document.createElement('button');
+                button.textContent = `Download Partner ${i + 1}`;
+                button.addEventListener('click', () => downloadCanvas(canvas, `partner${i + 1}.png`));
+                div.appendChild(button);
+                
+                container.appendChild(div);
+            });
+        });
+        
+        // Generate payment method images
+        document.getElementById('generate-payments').addEventListener('click', function() {
+            const container = document.getElementById('payment-images');
+            container.innerHTML = '';
+            
+            const payments = [
+                { name: 'VISA', color: '#1a1f71' },
+                { name: 'MASTERCARD', color: '#eb001b' },
+                { name: 'AMEX', color: '#006fcf' },
+                { name: 'PAYPAL', color: '#003087' }
+            ];
+            
+            payments.forEach((payment, index) => {
+                const canvas = document.createElement('canvas');
+                canvas.width = 200;
+                canvas.height = 100;
+                const ctx = canvas.getContext('2d');
+                
+                // Background
+                ctx.fillStyle = payment.color;
+                ctx.fillRect(0, 0, 200, 100);
+                
+                // Text
+                ctx.fillStyle = 'white';
+                ctx.font = 'bold 24px Arial';
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                ctx.fillText(payment.name, 100, 50);
+                
+                const div = document.createElement('div');
+                div.className = 'image-item';
+                div.appendChild(canvas);
+                
+                const button = document.createElement('button');
+                button.textContent = `Download ${payment.name}`;
+                button.addEventListener('click', () => downloadCanvas(canvas, `${payment.name.toLowerCase()}.png`));
+                div.appendChild(button);
+                
+                container.appendChild(div);
+            });
+        });
+    </script>
+</body>
+</html> 
